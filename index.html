@@ -1,0 +1,888 @@
+<!DOCTYPE html>
+<html lang="en_US" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="icon" href="assets/uploads/media-uploader/logo-acpc1657089220.png" type="image/png">
+  <link rel="preconnect" href="https://fonts.gstatic.com/">
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/frontend/css/flaticon.css">
+  <link rel="stylesheet" href="assets/frontend/css/nexicon.css">
+  <link rel="stylesheet" href="assets/frontend/css/fontawesome.min.css">
+  <link rel="stylesheet" href="assets/frontend/css/bootstrap.min.css">
+  <link rel="stylesheet" href="assets/frontend/css/owl.carousel.min.css">
+  <link rel="stylesheet" href="assets/frontend/css/animate.css">
+  <link rel="stylesheet" href="assets/frontend/css/magnific-popup.css">
+  <link rel="stylesheet" href="assets/frontend/css/style.css">
+  <link rel="stylesheet" href="assets/frontend/css/style1.css">
+  <link rel="stylesheet" href="assets/frontend/css/custom_sidebar.css">
+  <link rel="stylesheet" href="assets/frontend/css/helpers.css">
+  <link rel="stylesheet" href="assets/frontend/css/responsive.css">
+  <link rel="stylesheet" href="assets/frontend/css/dynamic-style.css">
+  <script src="assets/frontend/js/jquery-3.4.1.min.js"></script>
+  <script src="assets/frontend/js/jquery-migrate-3.1.0.min.js"></script>
+  <title>Admission Committee for Professional Courses (ACPC), Gujarat</title>
+
+  <style>
+    /* ===== ACPC ORIGINAL VARIABLES ===== */
+    :root {
+      --main-color-one: #013276;
+      --main-color-two: #5580ff;
+      --secondary-color: #1d2228;
+      --heading-color: #0a1121;
+      --paragraph-color: #000;
+      --heading-font: 'Nunito', sans-serif;
+      --body-font: 'Nunito', sans-serif;
+    }
+    /* ===== LAYOUT ===== */
+    html, body { height: 100%; margin: 0; padding: 0; overflow: hidden; }
+    #layout { display: flex; height: 100vh; overflow: hidden; }
+
+    #website-panel {
+      flex: 1;
+      overflow-y: auto;
+      overflow-x: hidden;
+      transition: flex 0.45s cubic-bezier(0.4,0,0.2,1);
+      scrollbar-width: thin;
+      scrollbar-color: #c5d0e0 transparent;
+    }
+    #website-panel::-webkit-scrollbar { width: 5px; }
+    #website-panel::-webkit-scrollbar-thumb { background: #c5d0e0; border-radius: 5px; }
+
+    /* ===== ACPC ORIGINAL CSS ===== */
+    .top-bar-area { background-color: var(--secondary-color); }
+    .top-bar-inner ul li a { color: #f2f2f2; }
+    .top-bar-inner ul li a:hover { color: var(--main-color-two); }
+    .footer-area .copyright-area { background-color: rgb(250,172,27) !important; color: rgb(45,49,107); }
+    .footer-area .footer-top { background-color: rgb(5,41,99) !important; }
+    .widget.footer-widget .widget-title { color: rgb(250,172,27); }
+    .footer-widget.widget_nav_menu ul li a:after { color: rgb(250,172,27); }
+    .footer-area .widget.footer-widget p,
+    .footer-area .widget.footer-widget ul li,
+    .footer-area .widget.footer-widget ul li a { color: rgb(255,255,255); }
+    .footer-area .widget.footer-widget ul li a:hover { color: rgb(250,172,27); }
+
+    /* ===== CHAT PANEL ===== */
+    #chat-panel {
+      width: 0;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      border-left: 3px solid rgba(1,50,118,0.18);
+      background: #f0f4fb;
+      transition: width 0.45s cubic-bezier(0.4,0,0.2,1);
+      flex-shrink: 0;
+    }
+    #chat-panel.open { width: 40%; min-width: 340px; }
+
+    /* Chat Header */
+    .chat-header {
+      background: linear-gradient(135deg, #013276 0%, #0a4fa8 100%);
+      padding: 15px 18px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-shrink: 0;
+      box-shadow: 0 3px 14px rgba(1,50,118,0.28);
+    }
+    .chat-header-left { display: flex; align-items: center; gap: 11px; }
+    .bot-avatar {
+      width: 42px; height: 42px;
+      background: linear-gradient(135deg, #fbac1b, #e8920a);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.15rem;
+      flex-shrink: 0;
+      box-shadow: 0 2px 10px rgba(251,172,27,0.45);
+    }
+    .bot-name {
+      font-family: 'Sora', sans-serif;
+      font-size: 0.92rem;
+      font-weight: 700;
+      color: #fff;
+      letter-spacing: 0.1px;
+    }
+    .bot-status {
+      font-size: 0.72rem;
+      color: #a8ffc4;
+      display: flex; align-items: center; gap: 5px;
+      margin-top: 2px;
+    }
+    .bot-status::before {
+      content: '';
+      width: 7px; height: 7px;
+      background: #22c55e;
+      border-radius: 50%;
+      animation: blink 2s infinite;
+    }
+    @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0.35} }
+
+    .chat-close-btn {
+      background: rgba(255,255,255,0.1);
+      border: 1px solid rgba(255,255,255,0.22);
+      color: #fff;
+      width: 30px; height: 30px;
+      border-radius: 50%;
+      cursor: pointer;
+      font-size: 0.88rem;
+      display: flex; align-items: center; justify-content: center;
+      transition: background 0.2s;
+      flex-shrink: 0;
+    }
+    .chat-close-btn:hover { background: rgba(255,255,255,0.24); }
+
+    /* Chat Messages */
+    #chat-messages {
+      flex: 1;
+      overflow-y: auto;
+      padding: 18px 13px;
+      display: flex;
+      flex-direction: column;
+      gap: 13px;
+      background: #f0f4fb;
+      scrollbar-width: thin;
+      scrollbar-color: #c8d3e8 transparent;
+    }
+    #chat-messages::-webkit-scrollbar { width: 3px; }
+    #chat-messages::-webkit-scrollbar-thumb { background: #c8d3e8; border-radius: 3px; }
+
+    .msg { display: flex; gap: 9px; max-width: 92%; animation: fadeUp 0.28s ease; }
+    @keyframes fadeUp { from{opacity:0;transform:translateY(7px)} to{opacity:1;transform:translateY(0)} }
+    .msg.bot { align-self: flex-start; }
+    .msg.user { align-self: flex-end; flex-direction: row-reverse; }
+
+    .msg-avatar {
+      width: 30px; height: 30px;
+      background: linear-gradient(135deg, #fbac1b, #e8920a);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 0.72rem;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+    .msg.user .msg-avatar {
+      background: linear-gradient(135deg, #013276, #0a4fa8);
+      color: white;
+    }
+    .msg-body { display: flex; flex-direction: column; gap: 3px; }
+    .msg-bubble {
+      padding: 10px 13px;
+      border-radius: 14px;
+      font-size: 0.858rem;
+      line-height: 1.65;
+      font-family: 'Nunito', sans-serif;
+    }
+    .msg.bot .msg-bubble {
+      background: #ffffff;
+      color: #1a2035;
+      border: 1px solid rgba(1,50,118,0.11);
+      border-top-left-radius: 4px;
+      box-shadow: 0 1px 5px rgba(1,50,118,0.07);
+    }
+    .msg.user .msg-bubble {
+      background: linear-gradient(135deg, #013276, #0a4fa8);
+      color: #fff;
+      border-top-right-radius: 4px;
+    }
+    .msg-time { font-size: 0.67rem; color: #8a96b0; padding: 0 3px; }
+    .msg.user .msg-time { text-align: right; }
+
+    .typing { display: flex; gap: 5px; align-items: center; padding: 11px 13px; }
+    .typing span {
+      width: 7px; height: 7px;
+      background: #aab8d0;
+      border-radius: 50%;
+      animation: bounce 1.2s infinite;
+    }
+    .typing span:nth-child(2) { animation-delay: 0.2s; }
+    .typing span:nth-child(3) { animation-delay: 0.4s; }
+    @keyframes bounce { 0%,60%,100%{transform:translateY(0)} 30%{transform:translateY(-7px)} }
+
+    /* Suggestions */
+    .suggestions-section {
+      padding: 11px 13px;
+      border-top: 1px solid rgba(1,50,118,0.1);
+      background: #e4ecf8;
+      flex-shrink: 0;
+    }
+    .suggestions-label {
+      font-size: 0.7rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      color: #013276;
+      margin-bottom: 8px;
+      opacity: 0.65;
+    }
+    .suggestions { display: flex; flex-direction: column; gap: 6px; }
+    .suggestion-chip {
+      background: #fff;
+      border: 1.5px solid rgba(1,50,118,0.18);
+      color: #013276;
+      padding: 8px 12px;
+      border-radius: 10px;
+      font-size: 0.81rem;
+      cursor: pointer;
+      text-align: left;
+      font-family: 'Nunito', sans-serif;
+      font-weight: 600;
+      transition: all 0.18s;
+      line-height: 1.35;
+    }
+    .suggestion-chip:hover {
+      background: #013276;
+      color: #fbac1b;
+      border-color: #013276;
+      transform: translateX(4px);
+    }
+
+    /* Chat Input */
+    .chat-input-area {
+      border-top: 1px solid rgba(1,50,118,0.1);
+      padding: 11px 13px;
+      display: flex;
+      align-items: flex-end;
+      gap: 9px;
+      background: #fff;
+      flex-shrink: 0;
+    }
+    #chat-input {
+      flex: 1;
+      background: #f2f6ff;
+      border: 1.5px solid rgba(1,50,118,0.15);
+      border-radius: 12px;
+      padding: 10px 13px;
+      color: #1a2035;
+      font-family: 'Nunito', sans-serif;
+      font-size: 0.875rem;
+      resize: none;
+      outline: none;
+      min-height: 42px;
+      max-height: 110px;
+      overflow-y: auto;
+      line-height: 1.5;
+      transition: border-color 0.2s;
+    }
+    #chat-input::placeholder { color: #9aaac0; }
+    #chat-input:focus { border-color: #013276; background: #fff; }
+
+    #send-btn {
+      width: 42px; height: 42px;
+      background: linear-gradient(135deg, #013276, #0a4fa8);
+      border: none;
+      border-radius: 12px;
+      cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+      transition: opacity 0.2s, transform 0.2s;
+      box-shadow: 0 3px 12px rgba(1,50,118,0.32);
+    }
+    #send-btn:hover { opacity: 0.86; transform: scale(1.07); }
+    #send-btn svg { width: 17px; height: 17px; fill: white; }
+
+    /* ===== CHAT TOGGLE ===== */
+    #chat-toggle {
+      position: fixed;
+      bottom: 26px;
+      right: 26px;
+      width: 60px; height: 60px;
+      background: linear-gradient(135deg, #013276, #0a4fa8);
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 6px 28px rgba(1,50,118,0.42);
+      z-index: 9999;
+      transition: transform 0.25s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.2s;
+    }
+    #chat-toggle:hover { transform: scale(1.1); box-shadow: 0 10px 36px rgba(1,50,118,0.55); }
+    #chat-toggle svg { width: 24px; height: 24px; fill: white; }
+    #chat-toggle.open { display: none; }
+    .chat-notif {
+      position: absolute;
+      top: -2px; right: -2px;
+      width: 18px; height: 18px;
+      background: #fbac1b;
+      border-radius: 50%;
+      border: 2.5px solid #fff;
+      font-size: 0.6rem;
+      font-weight: 700;
+      color: #013276;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .back-to-top { z-index: 500 !important; }
+  </style>
+</head>
+
+<body class="home_variant_08">
+
+<div id="layout">
+
+  <!-- ===== ACPC WEBSITE PANEL ===== -->
+  <div id="website-panel">
+
+    <div class="body-overlay" id="body-overlay"></div>
+
+    <!-- TOP HEADER -->
+    <div class="header-style-03 header-variant-08">
+      <nav class="navbar navbar-area navbar-expand-lg top_logo_sec">
+        <div class="container nav-container">
+          <div class="row align-items-center justify-content-center">
+            <div class="col-12 col-sm-3 col-md-3 col-lg-2 first_logo_sec">
+              <div class="d-flex justify-content-between align-items-center">
+                <div class="logo-wrapper">
+                  <a class="navbar-brand d-md-inline-block" href="index.html">
+                    <img src="assets/uploads/media-uploader/logo-acpc1657091277.png" alt="" class="img-fluid mx-auto logoleft" />
+                  </a>
+                </div>
+              </div>
+            </div>
+            <div class="col-12 col-sm-6 col-md-6 col-lg-8 header_middle_content">
+              <div class="text-middle">
+                <strong class="title_blue" lang="hi">&#2440;&#2465;&#2478;&#2495;&#2486;&#2472; &#2453;&#2478;&#2495;&#2463;&#2496; &#2470;&#2507;&#2480; &#2474;&#2509;&#2480;&#2507;&#2475;&#2503;&#2486;&#2472;&#2482; &#2453;&#2507;&#2480;&#2509;&#2488;&#2496;&#2488; (ACPC), &#2455;&#2497;&#2460;&#2480;&#2494;&#2468;</strong>
+              </div>
+              <div class="text-middle">
+                <p class="title_blue">Admission Committee for Professional Courses (ACPC), Gujarat</p>
+              </div>
+            </div>
+            <div class="col-12 col-sm-3 col-md-3 col-lg-2 last_logo_sec">
+              <div class="text-right" style="width:60%;">
+                <img src="assets/uploads/media-uploader/logo-acpc-21657091359.png" />
+              </div>
+            </div>
+          </div>
+        </div>
+      </nav>
+
+      <!-- TOP BAR -->
+      <div class="top-bar-area header-variant-08">
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-12">
+              <div class="top-bar-inner">
+                <div class="left-content"></div>
+                <a href="https://gujacpc.admissions.nic.in/">CLICK HERE FOR ONLINE ADMISSION REGISTRATION</a>
+                <div class="right-content">
+                  <span style="color:#fbac1b;font-size:16px;">Stay Updated</span>&nbsp;&nbsp;
+                  <a href="https://www.youtube.com/@ACPCGujarat-xp6yj" target="_blank"><img style="width:30px;" src="assets/uploads/media-uploader/youtube.png" /></a>&nbsp;&nbsp;&nbsp;
+                  <a href="https://www.instagram.com/acpc.gujarat?igsh=MXAzeWY1bWlkaHZm" target="_blank"><img style="width:30px;" src="assets/uploads/media-uploader/instagram.png" /></a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- MAIN NAV -->
+      <nav class="navbar navbar-area navbar-expand-lg">
+        <div class="container nav-container menu_bar">
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#bizcoxx_main_menu" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="bizcoxx_main_menu" style="flex-grow:0 !important">
+            <ul class="navbar-nav">
+              <li><a href="index.html"><i class='fas fa-home'></i>Home</a></li>
+              <li class="menu-item-has-children mega-menu-dropdown">
+                <a>Courses</a>
+                <ul class="sub-menu mega-menu-dropdown">
+                  <li><a href="ddcet.html">DDCET</a></li>
+                  <li><a href="be-b-tech.html">BE/B.TECH</a></li>
+                  <li><a href="degree-diploma-pharmacy.html">Degree / Diploma Pharmacy</a></li>
+                  <li><a href="d2d.html">D to D Engineering</a></li>
+                  <li><a href="d-to-d-pharmacy.html">D to D Pharmacy</a></li>
+                  <li><a href="b-arch-courses.html">B.Arch</a></li>
+                  <li><a href="b-plan-courses.html">B.Plan</a></li>
+                  <li><a href="bid-bct-courses.html">B.I.D &amp; B.C.T</a></li>
+                  <li><a href="hotel-and-tourism-management.html">Hotel and Tourism Management</a></li>
+                  <li><a href="working-professional.html">Working Professional</a></li>
+                  <li><a href="me-mtech-courses.html">ME/M.TECH</a></li>
+                  <li><a href="mpharm-courses.html">MPharm</a></li>
+                  <li><a href="mba-mca-courses.html">MBA/MCA</a></li>
+                  <li><a href="m-arch-courses.html">M.Arch</a></li>
+                  <li><a href="m-plan-courses.html">M.Plan</a></li>
+                  <li><a href="jk-admission.html">J&amp;K admission</a></li>
+                </ul>
+              </li>
+              <li class="menu-item-has-children">
+                <a>About Us</a>
+                <ul class="sub-menu">
+                  <li><a href="about.html">About ACPC</a></li>
+                  <li><a href="about-gters.html">ABOUT GTERS</a></li>
+                  <li><a href="team-acpc.html">TEAM ACPC</a></li>
+                </ul>
+              </li>
+              <li><a href="helpdesk.html">Help Desk</a></li>
+              <li class="menu-item-has-children">
+                <a>Rules</a>
+                <ul class="sub-menu">
+                  <li><a href="act-and-rules.html">Act and Rules</a></li>
+                  <li><a href="be-btech-rules.html">BE/B.TECH</a></li>
+                  <li><a href="deg-dip-pharmacy-rules.html">Degree / Diploma Pharmacy</a></li>
+                  <li><a href="d2d-eng-rules.html">D to D Engineering</a></li>
+                  <li><a href="d2d-pharmacy-rules.html">D to D Pharmacy</a></li>
+                  <li><a href="b-arch-rules.html">B.Arch</a></li>
+                  <li><a href="b-plan-rules.html">B.Plan</a></li>
+                  <li><a href="bid-bct-rules.html">B.I.D &amp; B.C.T</a></li>
+                  <li><a href="deg-hotel-management-rules.html">Deg. Hotel management</a></li>
+                  <li><a href="d2d-hotel-management-rules.html">D to D Hotel management</a></li>
+                  <li><a href="me-mpharm-rules.html">ME/MPharm</a></li>
+                  <li><a href="mba-mca-rules.html">MBA/MCA</a></li>
+                  <li><a href="m-arch-rules.html">M.Arch</a></li>
+                  <li><a href="m-plan-rules.html">M.Plan</a></li>
+                </ul>
+              </li>
+              <li><a href="circulars.html">Circulars</a></li>
+              <li class="menu-item-has-children">
+                <a>Archives</a>
+                <ul class="sub-menu">
+                  <li><a href="aicte-aph.html">AICTE APH</a></li>
+                  <li><a href="be-btech-archives.html">BE/B.TECH</a></li>
+                  <li><a href="degdip-pharmacy-archives.html">Degree / Diploma Pharmacy</a></li>
+                  <li><a href="d2d-eng-archives.html">D to D Engineering</a></li>
+                  <li><a href="d2d-pharmacy-archives.html">D to D Pharmacy</a></li>
+                  <li><a href="b-arch-archives.html">B.Arch</a></li>
+                  <li><a href="b-plan-archives.html">B.Plan</a></li>
+                  <li><a href="bid-bct-archives.html">B.I.D &amp; B.C.T</a></li>
+                  <li><a href="deg-hotel-management-archives.html">Deg. Hotel management</a></li>
+                  <li><a href="d2d-hotel-management-archives.html">D to D Hotel management</a></li>
+                  <li><a href="me-mpharm-archives.html">ME/MPharm</a></li>
+                  <li><a href="mba-mca-archives.html">MBA/MCA</a></li>
+                  <li><a href="m-arch-archives.html">M.Arch</a></li>
+                  <li><a href="m-plan-archives.html">M.Plan</a></li>
+                </ul>
+              </li>
+              <li class="menu-item-has-children">
+                <a>Institute Login</a>
+                <ul class="sub-menu">
+                  <li><a href="http://be.jacpcldce.ac.in/" target="_blank">B.E./ B.Tech</a></li>
+                  <li><a href="http://bpharm.jacpcldce.ac.in/" target="_blank">B.Pharm</a></li>
+                  <li><a href="http://d2d.jacpcldce.ac.in/" target="_blank">D2D</a></li>
+                  <li><a href="http://mbamca.jacpcldce.ac.in/" target="_blank">MBA / MCA</a></li>
+                  <li><a href="http://me.jacpcldce.ac.in/" target="_blank">M.E.</a></li>
+                  <li><a href="http://mpharm.jacpcldce.ac.in/" target="_blank">M.Pharm</a></li>
+                </ul>
+              </li>
+              <li><a href="https://gujacpc.admissions.nic.in/">Candidate Login</a></li>
+              <li><a href="contact-us.html">Contact Us</a></li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </div>
+
+    <!-- HERO SLIDER -->
+    <div class="header-slider-wrapper global-carousel-init grocery-home" data-loop="true" data-desktopitem="1" data-mobileitem="1" data-tabletitem="1" data-dots="false" data-nav="true" data-autoplay="true" data-stagepadding="0" data-margin="0">
+      <div class="header-area grocery-home" style="background-image:url(assets/uploads/media-uploader/display-011652795026.jpg);" data-padding-top="225" data-padding-bottom="220">
+        <div class="container"><div class="row"><div class="col-lg-6"><div class="header-inner"><span class="subtitle"></span><h1 class="title"></h1><p class="description"></p></div></div></div></div>
+      </div>
+      <div class="header-area grocery-home" style="background-image:url(assets/uploads/media-uploader/display-021652795060.jpg);" data-padding-top="225" data-padding-bottom="220">
+        <div class="container"><div class="row"><div class="col-lg-6"><div class="header-inner"><span class="subtitle"></span><h1 class="title"></h1><p class="description"></p></div></div></div></div>
+      </div>
+      <div class="header-area grocery-home" style="background-image:url(assets/uploads/media-uploader/display-031652795088.jpg);" data-padding-top="225" data-padding-bottom="220">
+        <div class="container"><div class="row"><div class="col-lg-6"><div class="header-inner"><span class="subtitle"></span><h1 class="title"></h1><p class="description"></p></div></div></div></div>
+      </div>
+      <div class="header-area grocery-home" style="background-image:url(assets/uploads/media-uploader/display-041652795132.jpg);" data-padding-top="225" data-padding-bottom="220">
+        <div class="container"><div class="row"><div class="col-lg-6"><div class="header-inner"><span class="subtitle"></span><h1 class="title"></h1><p class="description"></p></div></div></div></div>
+      </div>
+      <div class="header-area grocery-home" style="background-image:url(assets/uploads/media-uploader/display-061652795198.jpg);" data-padding-top="225" data-padding-bottom="220">
+        <div class="container"><div class="row"><div class="col-lg-6"><div class="header-inner"><span class="subtitle"></span><h1 class="title"></h1><p class="description"></p></div></div></div></div>
+      </div>
+    </div>
+
+    <!-- INSTITUTE SEARCH -->
+    <div class="charity-about-area">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8">
+            <div class="left-content-area">
+              <form action="https://acpc.gujarat.gov.in/institute_list" method="POST" id="searchForm">
+                <input type="hidden" name="_token" value="">
+                <div class="row mt-2">
+                  <div class="col-md-6 mb-2">
+                    <select class="form-select" name="program_name" id="program_name">
+                      <option value="">Select Program</option>
+                      <option value="1">B.E./ B.Tech</option>
+                      <option value="5">DEGREE PHARMACY</option>
+                      <option value="4">DIPLOMA PHARMACY</option>
+                      <option value="2">Diploma to Degree Engineering</option>
+                      <option value="3">M.E./M.Tech</option>
+                      <option value="6">M.Pharm</option>
+                      <option value="8">MBA/MCA</option>
+                    </select>
+                  </div>
+                  <div class="col-md-6 mb-2">
+                    <select class="form-select" name="branch" id="branch">
+                      <option value="">Select Branch</option>
+                    </select>
+                  </div>
+                  <div class="col-md-6 mb-2">
+                    <select class="form-select" name="institute_type">
+                      <option value="">Institute Type</option>
+                      <option value="1">PVT</option>
+                      <option value="2">Govt/GIA</option>
+                      <option value="3">Autonomus</option>
+                      <option value="4">PPP</option>
+                      <option value="7">Uni Managed unaided</option>
+                      <option value="8">COE</option>
+                    </select>
+                  </div>
+                  <div class="col-md-6 mb-2">
+                    <select class="form-select" name="district">
+                      <option value="">Select District</option>
+                      <option value="Ahmedabad">Ahmedabad</option>
+                      <option value="Amreli">Amreli</option>
+                      <option value="Anand">Anand</option>
+                      <option value="Aravalli">Aravalli</option>
+                      <option value="Banaskantha">Banaskantha</option>
+                      <option value="Bharuch">Bharuch</option>
+                      <option value="Bhavnagar">Bhavnagar</option>
+                      <option value="Gandhinagar">Gandhinagar</option>
+                      <option value="Junagadh">Junagadh</option>
+                      <option value="Rajkot">Rajkot</option>
+                      <option value="Surat">Surat</option>
+                      <option value="Vadodara">Vadodara</option>
+                      <option value="Valsad">Valsad</option>
+                    </select>
+                  </div>
+                  <div class="col-md-6 mb-2">
+                    <button type="submit" class="btn btn-secondary">Search</button>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CIRCULARS + NEWS -->
+    <div class="quality-area grid-box-wrapper-section-main">
+      <div class="container grid-box-wrapper-section">
+        <div class="row">
+          <div class="grid-box-wrapper-width">
+            <div class="grid-box-wrapper">
+              <div class="grid-box-wrapper circuler-box-wrapper">
+                <div class="grid-boxes">
+                  <div class="inner-grid-box">
+                    <h3>Circulars</h3>
+                    <ul class="home-page">
+                      <li><a href="assets/uploads/media-uploader/important-information-for-parents-and-students-regarding-admission-to-professional-courses1749123269.pdf">Important information for parents and students regarding admission to professional courses</a></li>
+                      <li><a href="assets/uploads/media-uploader/syllabus-ddcet-engineering-20251731391750.pdf">DDCET Syllabus Engineering</a></li>
+                      <li><a href="assets/uploads/media-uploader/syllabus-ddcet-pharmacy-20251731391750.pdf">DDCET Syllabus Pharmacy</a></li>
+                      <li><a href="assets/uploads/media-uploader/1-ddcet-gr-gujarati1702910383.pdf">DDCET GR Gujarati</a></li>
+                      <li><a href="assets/uploads/media-uploader/2-ddcet-gr-english1702910381.pdf">DDCET GR English</a></li>
+                      <li><a href="assets/uploads/media-uploader/frc1749198256.pdf" target="_blank">Information Regarding fees determined by Fee Regulatory Committee for self finance Institutions</a></li>
+                      <li><a href="assets/uploads/media-uploader/06-terms-and-conditions-for-payment-gateway1652440198.pdf" target="_blank">Terms and Conditions for payment Gateway</a></li>
+                      <li><a href="assets/uploads/media-uploader/08-prevention-and-prohibition-of-ragging1652440305.pdf" target="_blank">Prevention and Prohibition of Ragging</a></li>
+                    </ul>
+                  </div>
+                </div>
+                <div class="grid-boxes">
+                  <div class="inner-grid-box">
+                    <h3>Latest News</h3>
+                    <ul class="home-page">
+                      <li><a href="assets/uploads/media-uploader/corrigendumeoibank1768555802.pdf">Corrigendum of EoI for Banking Services for various activities under GTERS</a></li>
+                      <li><a href="assets/uploads/media-uploader/final-eoi-banking-gters-29-12-20251766997395.pdf">29.12.2025 Invitation for Expression of Interest (EOI) for banking services</a></li>
+                      <li><a href="assets/uploads/media-uploader/admission-process-dos-and-donts1749123856.pdf">Admission process Dos and Don'ts</a></li>
+                      <li><a href="assets/uploads/media-uploader/advertisement-for-inviting-expression-of-interest1748245468.pdf">26.05.2025: Advertisement for inviting Expression of Interest</a></li>
+                      <li><a href="assets/uploads/media-uploader/change-in-venue-for-acpc-awareness-seminar-padra1747384593.pdf">Change in Venue for ACPC Awareness Seminar - Padra</a></li>
+                      <li><a href="assets/uploads/media-uploader/21032025-advertisement-for-degree-engineering-2025-26-english1742554844.pdf">21.03.2025 Advertisement for Degree Engineering Admission 2025-26 English</a></li>
+                      <li><a href="assets/uploads/media-uploader/21032025-advertisement-for-degree-engineering-2025-26-gujarati1742554843.pdf">21.03.2025 Advertisement for Degree Engineering Admission 2025-26 Gujarati</a></li>
+                      <li><a href="assets/uploads/media-uploader/ddcet2025-awareness-seminar-guj-300120251738842427.pdf">30.01.2025: DDCET2025 Awareness Seminar Schedule</a></li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- COURSES LIST -->
+    <div class="quality-area grid-box-wrapper-section-main">
+      <div class="container grid-box-wrapper-section">
+        <div class="row">
+          <div class="grid-box-wrapper-width">
+            <div class="grid-box-wrapper">
+              <div class="card">
+                <div class="board" style="--admission-color:19,23,96;">
+                  <div class="top_image" style="position:relative">
+                    <div class="overlay_content" style="position:absolute;bottom:18px;z-index:2;padding:0 11px;">
+                      <h3>List of Available Courses</h3>
+                    </div>
+                  </div>
+                  <div class="degree_details" style="padding:17px;padding-bottom:10px;">
+                    <ul class="list-unstyled" style="margin-bottom:0;">
+                      <li><h5><a href="be-b-tech.html"><span class="triangle">T</span>BE/B.TECH</a></h5></li>
+                      <li><h5><a href="degree-diploma-pharmacy.html"><span class="triangle">T</span>Deg./Dip. Pharmacy</a></h5></li>
+                      <li><h5><a href="ddcet.html"><span class="triangle">T</span>DDCET</a></h5></li>
+                      <li><h5><a href="d2d.html"><span class="triangle">T</span>D to D Engineering</a></h5></li>
+                      <li><h5><a href="d-to-d-pharmacy.html"><span class="triangle">T</span>D to D Pharmacy</a></h5></li>
+                      <li><h5><a href="b-arch-courses.html"><span class="triangle">T</span>B.Arch</a></h5></li>
+                      <li><h5><a href="b-plan-courses.html"><span class="triangle">T</span>B.Plan</a></h5></li>
+                      <li><h5><a href="bid-bct-courses.html"><span class="triangle">T</span>B.I.D &amp; B.C.T</a></h5></li>
+                      <li><h5><a href="hotel-and-tourism-management.html"><span class="triangle">T</span>Hotel and Tourism Management</a></h5></li>
+                      <li><h5><a href="working-professional.html"><span class="triangle">T</span>Working Professional</a></h5></li>
+                      <li><h5><a href="me-mtech-courses.html"><span class="triangle">T</span>ME/M.TECH</a></h5></li>
+                      <li><h5><a href="mpharm-courses.html"><span class="triangle">T</span>MPharm</a></h5></li>
+                      <li><h5><a href="mba-mca-courses.html"><span class="triangle">T</span>MBA/MCA</a></h5></li>
+                      <li><h5><a href="m-arch-courses.html"><span class="triangle">T</span>M.Arch</a></h5></li>
+                      <li><h5><a href="m-plan-courses.html"><span class="triangle">T</span>M.Plan</a></h5></li>
+                      <li><h5><a href="jk-admission.html"><span class="triangle">T</span>J&amp;K admission</a></h5></li>
+                      <li><h5><a href="assets/uploads/media-uploader/nba-naac-institutes-engg-and-pharmacy1683526401.pdf" target="_blank"><span class="triangle">T</span>Institute NBA/NAAC Status</a></h5></li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer class="footer-area home-variant-08">
+      <div class="footer-top padding-top-90 padding-bottom-65">
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-3 col-md-6">
+              <div class="footer-widget widget">
+                <div class="about_us_widget style-01">
+                  <img src="assets/uploads/media-uploader/logo-acpc1657089220.png" class="footer-logo" alt=""/>
+                  <p>Member Secretary<br>Admission Committee for Professional Courses<br>Admission Building, Nr. Library, L. D. College of Engg. Campus,<br>Ahmedabad 380015, INDIA<br>Ph. +91-79-26566000<br>Email: acpc@gujarat.gov.in</p>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-3 col-md-6">
+              <div class="footer-widget widget widget_nav_menu">
+                <h4 class="widget-title">Important Links</h4>
+                <ul>
+                  <li><a href="https://gujacpc.admissions.nic.in/">For online admission process</a></li>
+                  <li><a href="https://frctech.gujarat.gov.in/FeeCircular">Fee Regulatory Committee (Tech), Gujarat</a></li>
+                  <li><a href="https://dte.gujarat.gov.in/">Director of Technical Education, Gujarat</a></li>
+                  <li><a href="https://mysy.guj.nic.in/">MYSY Scholarship</a></li>
+                  <li><a href="http://www.ssipgujarat.in/">SSIP Gujarat</a></li>
+                </ul>
+              </div>
+            </div>
+            <div class="col-lg-3 col-md-6">
+              <div class="footer-widget widget widget_nav_menu">
+                <h4 class="widget-title">Important Links</h4>
+                <ul>
+                  <li><a href="https://www.aicte-india.org/">All India Council for Technical Education, New Delhi</a></li>
+                  <li><a href="https://www.pci.nic.in/">Pharmacy Council of India, New Delhi</a></li>
+                  <li><a href="https://www.coa.gov.in/">Council of Architecture (CoA)</a></li>
+                  <li><a href="https://www.vidyalakshmi.co.in/Students/">Vidyalaxmi Yojna Portal</a></li>
+                  <li><a href="https://www.digitalgujarat.gov.in/">Digital Gujarat Portal</a></li>
+                </ul>
+              </div>
+            </div>
+            <div class="col-lg-3 col-md-6">
+              <div class="footer-widget widget">
+                <a href="rti-grivance.html"><h4 style="color:rgb(250,172,27);font-size:18px;">Grievance Cell</h4></a>
+                <a href="rti-grivance.html"><h4 style="color:rgb(250,172,27);font-size:18px;">RTI disclaimer</h4></a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="copyright-area">
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-12">
+              <div class="copyright-item">
+                <div class="copyright-area-inner">&copy; 2026 All right reserved by <a href="#">ACPC</a></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <span class="back-top"><i class="fas fa-angle-up"></i></span>
+    </div>
+
+  </div><!-- /website-panel -->
+
+
+  <!-- ===== CHAT PANEL ===== -->
+  <div id="chat-panel">
+
+    <div class="chat-header">
+      <div class="chat-header-left">
+        <div class="bot-avatar">🤖</div>
+        <div>
+          <div class="bot-name">Ask Ally — ACPC Support</div>
+          <div class="bot-status">Online &middot; Replies instantly</div>
+        </div>
+      </div>
+      <button class="chat-close-btn" id="close-chat" title="Close chat">&#x2715;</button>
+    </div>
+
+    <div id="chat-messages">
+      <div class="msg bot">
+        <div class="msg-avatar">🤖</div>
+        <div class="msg-body">
+          <div class="msg-bubble">👋 Hello! I'm <strong>Ask Ally</strong>, the ACPC support assistant. I'm here to help you with all admission-related queries for Gujarat's professional courses.</div>
+          <div class="msg-time">Just now</div>
+        </div>
+      </div>
+      <div class="msg bot">
+        <div class="msg-avatar">🤖</div>
+        <div class="msg-body">
+          <div class="msg-bubble">Pick a question below or type your own to get started.</div>
+          <div class="msg-time">Just now</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="suggestions-section" id="suggestions-section">
+      <div class="suggestions-label">Frequently Asked</div>
+      <div class="suggestions" id="suggestions">
+        <button class="suggestion-chip">🎓 How do I register for online admission?</button>
+        <button class="suggestion-chip">📋 What courses does ACPC offer?</button>
+        <button class="suggestion-chip">🏛️ How can I find institutes by district?</button>
+        <button class="suggestion-chip">📄 Where can I find DDCET syllabus?</button>
+        <button class="suggestion-chip">📞 How do I contact ACPC helpdesk?</button>
+      </div>
+    </div>
+
+    <div class="chat-input-area">
+      <textarea id="chat-input" placeholder="Type your question here..." rows="1"></textarea>
+      <button id="send-btn" title="Send">
+        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/></svg>
+      </button>
+    </div>
+
+  </div><!-- /chat-panel -->
+
+</div><!-- /layout -->
+
+<!-- CHAT TOGGLE BUTTON -->
+<button id="chat-toggle" title="Chat with ACPC Support">
+  <span class="chat-notif">1</span>
+  <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-2 12H6v-2h12v2zm0-3H6V9h12v2zm0-3H6V6h12v2z"/></svg>
+</button>
+
+<!-- Scripts -->
+<script src="assets/frontend/js/bootstrap.bundle.min.js"></script>
+<script src="assets/frontend/js/owl.carousel.min.js"></script>
+<script src="assets/frontend/js/main.js"></script>
+
+<script>
+  const panel = document.getElementById('chat-panel');
+  const toggle = document.getElementById('chat-toggle');
+  const closeBtn = document.getElementById('close-chat');
+  const messages = document.getElementById('chat-messages');
+  const input = document.getElementById('chat-input');
+  const sendBtn = document.getElementById('send-btn');
+  const suggestionsEl = document.getElementById('suggestions');
+  const suggestionsSection = document.getElementById('suggestions-section');
+  let isOpen = false;
+
+  function openChat() {
+    isOpen = true;
+    panel.classList.add('open');
+    toggle.classList.add('open');
+    const notif = toggle.querySelector('.chat-notif');
+    if (notif) notif.remove();
+    setTimeout(() => input.focus(), 460);
+  }
+
+  function closeChat() {
+    isOpen = false;
+    panel.classList.remove('open');
+    toggle.classList.remove('open');
+  }
+
+  toggle.addEventListener('click', () => isOpen ? closeChat() : openChat());
+  closeBtn.addEventListener('click', closeChat);
+
+  function getTime() {
+    const n = new Date();
+    return n.getHours().toString().padStart(2,'0') + ':' + n.getMinutes().toString().padStart(2,'0');
+  }
+
+  function addMessage(text, sender) {
+    const div = document.createElement('div');
+    div.className = 'msg ' + sender;
+    const icon = sender === 'bot' ? '🤖' : '👤';
+    div.innerHTML = '<div class="msg-avatar">' + icon + '</div><div class="msg-body"><div class="msg-bubble">' + text + '</div><div class="msg-time">' + getTime() + '</div></div>';
+    messages.appendChild(div);
+    messages.scrollTop = messages.scrollHeight;
+  }
+
+  function showTyping() {
+    const div = document.createElement('div');
+    div.className = 'msg bot';
+    div.id = 'typing-indicator';
+    div.innerHTML = '<div class="msg-avatar">🤖</div><div class="msg-body"><div class="msg-bubble"><div class="typing"><span></span><span></span><span></span></div></div></div>';
+    messages.appendChild(div);
+    messages.scrollTop = messages.scrollHeight;
+    return div;
+  }
+
+  const botReplies = {
+    register: 'To register for online admission:<br><br>1. Visit <a href="https://gujacpc.admissions.nic.in/" target="_blank" style="color:#013276;font-weight:700;">gujacpc.admissions.nic.in</a><br>2. Create a new candidate account<br>3. Fill in your personal &amp; academic details<br>4. Upload required documents<br>5. Pay the registration fee online<br><br>Keep your <strong>HSC/SSC marksheet</strong> and a valid email ID ready.',
+    courses: 'ACPC manages admissions for the following professional courses:<br><br>📐 <strong>After HSC:</strong> BE/B.Tech, Degree/Diploma Pharmacy, B.Arch, B.Plan, B.I.D &amp; B.C.T, Hotel &amp; Tourism Management<br><br>🎓 <strong>After Graduation:</strong> ME/M.Tech, M.Pharm, MBA/MCA, M.Arch, M.Plan<br><br>🔁 <strong>Lateral Entry:</strong> D to D Engineering &amp; Pharmacy<br><br>Explore all from the <strong>Courses</strong> menu above.',
+    institute: 'To find institutes by district, use the <strong>Institute Search form</strong> on this page:<br><br>1. Select your Program (e.g. B.E./B.Tech)<br>2. Choose Branch (optional)<br>3. Select Institute Type<br>4. Pick your District<br>5. Click <strong>Search</strong><br><br>You will see a full list of ACPC-affiliated institutes in that district.',
+    ddcet: 'DDCET syllabus documents are available for download:<br><br>📘 <a href="assets/uploads/media-uploader/syllabus-ddcet-engineering-20251731391750.pdf" style="color:#013276;font-weight:600;">DDCET Syllabus — Engineering</a><br>💊 <a href="assets/uploads/media-uploader/syllabus-ddcet-pharmacy-20251731391750.pdf" style="color:#013276;font-weight:600;">DDCET Syllabus — Pharmacy</a><br><br>You can also find them under the <strong>Circulars</strong> section of this website.',
+    contact: 'You can reach ACPC through:<br><br>📍 <strong>Address:</strong> Admission Building, Nr. Library, L. D. College of Engg. Campus, Ahmedabad 380015<br>📞 <strong>Phone:</strong> +91-79-26566000<br>📧 <strong>Email:</strong> acpc@gujarat.gov.in<br>🌐 <strong>Helpdesk:</strong> <a href="helpdesk.html" style="color:#013276;font-weight:600;">Visit Help Desk page</a><br><br>Office hours: Monday–Friday, 10:30 AM to 6:00 PM.'
+  };
+
+  function getBotReply(text) {
+    const l = text.toLowerCase();
+    if (l.includes('register') || l.includes('online admission') || l.includes('apply')) return botReplies.register;
+    if (l.includes('course') || l.includes('programme') || l.includes('offer')) return botReplies.courses;
+    if (l.includes('institute') || l.includes('district') || l.includes('college') || l.includes('find')) return botReplies.institute;
+    if (l.includes('ddcet') || l.includes('syllabus')) return botReplies.ddcet;
+    if (l.includes('contact') || l.includes('helpdesk') || l.includes('phone') || l.includes('email')) return botReplies.contact;
+    var fallbacks = [
+      'Thank you for your query! For detailed information, please visit our <strong>Help Desk</strong> page or call <strong>+91-79-26566000</strong> during office hours.',
+      'I recommend checking the <strong>Circulars</strong> section for the latest updates, or email our team at <strong>acpc@gujarat.gov.in</strong>.',
+      'For that specific query, our helpdesk team at <strong>+91-79-26566000</strong> will be able to assist you accurately.'
+    ];
+    return fallbacks[Math.floor(Math.random() * fallbacks.length)];
+  }
+
+  function sendMessage(text) {
+    if (!text.trim()) return;
+    addMessage(text, 'user');
+    suggestionsSection.style.display = 'none';
+    var typing = showTyping();
+    var delay = 850 + Math.random() * 600;
+    setTimeout(function() {
+      typing.remove();
+      addMessage(getBotReply(text), 'bot');
+    }, delay);
+  }
+
+  sendBtn.addEventListener('click', function() {
+    var val = input.value.trim();
+    if (val) { sendMessage(val); input.value = ''; input.style.height = 'auto'; }
+  });
+
+  input.addEventListener('keydown', function(e) {
+    if (e.key === 'Enter' && !e.shiftKey) {
+      e.preventDefault();
+      var val = input.value.trim();
+      if (val) { sendMessage(val); input.value = ''; input.style.height = 'auto'; }
+    }
+  });
+
+  input.addEventListener('input', function() {
+    input.style.height = 'auto';
+    input.style.height = Math.min(input.scrollHeight, 110) + 'px';
+  });
+
+  suggestionsEl.querySelectorAll('.suggestion-chip').forEach(function(chip) {
+    chip.addEventListener('click', function() { sendMessage(chip.textContent.trim()); });
+  });
+</script>
+
+</body>
+</html>
