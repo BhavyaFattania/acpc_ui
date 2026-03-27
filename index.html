@@ -35,7 +35,56 @@
       --paragraph-color: #000;
       --heading-font: 'Nunito', sans-serif;
       --body-font: 'Nunito', sans-serif;
+      --bg_052963: #052963;
+      --pera_000: #000;
     }
+
+    /* ===== BASE STYLES FROM UPLOADED CSS ===== */
+    html {
+      -webkit-text-size-adjust: 100%;
+      -ms-text-size-adjust: 100%;
+      overflow-x: hidden;
+      font-family: var(--body-font);
+    }
+
+    * {
+      -webkit-box-sizing: border-box;
+      box-sizing: border-box;
+      outline: 0;
+      -moz-osx-font-smoothing: grayscale;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    body {
+      margin: 0;
+      color: var(--paragraph-color);
+      overflow-x: hidden;
+      font-family: var(--body-font);
+    }
+
+    h1 { font-size: 48px; line-height: 1.0833333333; }
+    h2 { font-size: 36px; line-height: 1.4444444444; }
+    h3 { font-size: 24px; line-height: 1.0833333333; }
+    h4 { font-size: 20px; line-height: 1.2380952381; }
+
+    h1, h2, h3, h4, h5, h6 {
+      color: var(--heading-color);
+      font-family: var(--heading-font);
+      font-weight: 600;
+    }
+
+    p {
+      color: var(--paragraph-color);
+      -webkit-hyphens: auto;
+      -ms-hyphens: auto;
+      hyphens: auto;
+      margin-bottom: 10px;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    a, a:active, a:focus, a:hover { text-decoration: none; outline: 0; color: inherit; }
+    img { max-width: 100%; }
+
     /* ===== LAYOUT ===== */
     html, body { height: 100%; margin: 0; padding: 0; overflow: hidden; }
     #layout { display: flex; height: 100vh; overflow: hidden; }
@@ -52,9 +101,17 @@
     #website-panel::-webkit-scrollbar-thumb { background: #c5d0e0; border-radius: 5px; }
 
     /* ===== ACPC ORIGINAL CSS ===== */
-    .top-bar-area { background-color: var(--secondary-color); }
+    .top-bar-area { 
+      background-color: #052963 !important; 
+      padding: 8px 0;
+      color: #fff;
+      text-align: center;
+    }
     .top-bar-inner ul li a { color: #f2f2f2; }
     .top-bar-inner ul li a:hover { color: var(--main-color-two); }
+    .top-bar-inner a { font-size: 16px; color: #fbac1b; }
+    .top-bar-area a:hover { color: #fff; text-decoration: underline; }
+
     .footer-area .copyright-area { background-color: rgb(250,172,27) !important; color: rgb(45,49,107); }
     .footer-area .footer-top { background-color: rgb(5,41,99) !important; }
     .widget.footer-widget .widget-title { color: rgb(250,172,27); }
@@ -63,6 +120,56 @@
     .footer-area .widget.footer-widget ul li,
     .footer-area .widget.footer-widget ul li a { color: rgb(255,255,255); }
     .footer-area .widget.footer-widget ul li a:hover { color: rgb(250,172,27); }
+    .footer-area .widget.footer-widget p { line-height: 16px; margin-bottom: 8px; font-size: 14px; }
+    .footer-widget.widget_nav_menu ul li { line-height: 16px; margin: 0 0 8px 0; padding-left: 15px; font-size: 14px; }
+
+    /* Header Styles */
+    .header-style-03 .text-middle p, .header-style-03 .text-middle strong { color: #000; line-height: 1.5; }
+    .header-style-03 .text-middle p { margin-bottom: 0; font-weight: 700; font-size: 23px; text-align: center; }
+    .header-style-03 .text-middle strong { font-weight: 400; font-size: 20px; display: block; text-align: center; margin-bottom: 5px; }
+    .header-style-03 .text-right { width: auto !important; max-width: 90px; margin-left: auto; }
+    .header-style-03.header-variant-08 .navbar-area { background-color: #f6f3ee; margin-bottom: 0; }
+    .header-style-03.header-variant-08 .navbar-area .nav-container.menu_bar { padding: 0; }
+    .navbar-brand { height: auto !important; }
+    .top_logo_sec .nav-container { justify-content: center; }
+    .col-md-6.header_middle_content { margin-bottom: 0; }
+
+    /* Forms */
+    .charity-about-area { margin: 50px 0; }
+    .charity-about-area .left-content-area form { margin-bottom: 15px; background-color: #f3f3f3; padding: 15px 15px 10px 15px; }
+    .left-content-area .description p { line-height: 1.5; }
+    .form-select {
+      border: 1px solid #ccc;
+      padding: 10px 50px 10px 15px;
+      appearance: none;
+      -webkit-appearance: none;
+      width: 100%;
+      background-image: url(../../../../demo.jacpcldce.ac.in/assets/uploads/media-uploader/arrow-down-sign-to-navigate1652261991.png);
+      background-repeat: no-repeat;
+      background-position-x: calc(100% - 20px);
+      background-position-y: 50%;
+      background-size: 12px;
+    }
+    .form-select option { font-size: 14px; }
+
+    /* Buttons */
+    .btn { min-width: 100px; }
+    .btn-secondary { background-color: #fbac1b; border-color: #fbac1b; color: #12165c; }
+    .btn-secondary:hover { background-color: #131760; border-color: #131760; color: #fff !important; }
+    .btn-primary { background-color: #131760; border-color: #131760; }
+    .btn-primary:hover { background-color: #fbac1b; border-color: #fbac1b; }
+
+    /* Grid Boxes */
+    .grid-box-wrapper { justify-content: space-between; }
+    .grid-box-wrapper .card { margin-left: auto; margin-top: -917px; margin-right: 8px; }
+    .circuler-box-wrapper { margin-top: 0 !important; max-width: 705px; margin-left: -0px !important; margin-right: -0px !important; padding: 0 0 !important; }
+    .circuler-box-wrapper .grid-boxes { position: relative; z-index: 9; width: calc(100% / 2) !important; }
+    .circuler-box-wrapper .grid-boxes ul { max-height: unset !important; margin: 0 0 0 20px !important; padding: 20px !important; }
+    .circuler-box-wrapper .grid-boxes .inner-grid-box { overflow: hidden; max-height: 600px; height: auto !important; min-height: 600px !important; }
+    .top_image { position: relative; }
+    .board .top_image .overlay_content h3:after { height: 2px; }
+    .board .degree_details ul li h5 a::after { height: 2px; }
+    .board .top_image img { display: none; }
 
     /* ===== CHAT PANEL ===== */
     #chat-panel {
@@ -313,6 +420,43 @@
       display: flex; align-items: center; justify-content: center;
     }
     .back-to-top { z-index: 500 !important; }
+
+    /* ===== RESPONSIVE ===== */
+    @media only screen and (max-width: 1199px) {
+      .circuler-box-wrapper { max-width: 550px !important; }
+      .circuler-box-wrapper .grid-boxes .inner-grid-box { max-height: 400px; min-height: 400px !important; }
+      .grid-box-wrapper .card { margin-top: -718px; }
+    }
+
+    @media only screen and (max-width: 992px) {
+      .circuler-box-wrapper { max-width: unset !important; margin: 0px -0px !important; width: auto !important; }
+      .grid-box-wrapper .card { margin-top: 0; max-width: 100%; min-width: 100%; padding: 0px 8px; }
+      .header-style-03 .text-middle p { font-size: 18px; }
+      .header-style-03 .text-middle strong { font-size: 14px; }
+      .charity-about-area .left-content-area { padding-right: 0; padding-bottom: 30px; }
+      .header-style-03.header-variant-08 .navbar-area { position: relative; }
+      .header-style-03.header-variant-08 .navbar-area .nav-container.menu_bar { position: initial; min-height: 60px; }
+      .navbar-area .nav-container .navbar-collapse .navbar-nav li a { line-height: 1; font-size: 14px; }
+      .nav-container.menu_bar .navbar-toggler { margin-left: auto; }
+      .navbar-area .nav-container .navbar-collapse .navbar-nav li a i { padding-right: 5px; }
+      .nav-container.menu_bar .navbar-toggler:focus { outline: none; }
+      .header-area.grocery-home { background-size: contain; }
+      .circuler-box-wrapper { max-width: 100%; }
+    }
+
+    @media only screen and (max-width: 768px) {
+      body { font-size: 14px; }
+      .charity-about-area .left-content-area { padding-bottom: 30px; }
+      .board .top_image img { width: 100%; }
+      .board .degree_details ul li h5 { font-size: 14px; }
+      .charity-about-area { margin: 30px 0; }
+      .circuler-box-wrapper .grid-boxes { width: calc(100% / 1) !important; }
+    }
+
+    @media only screen and (max-width: 576px) {
+      .top-bar-area { font-size: 14px; line-height: 1.5; }
+      .header_middle_content, .last_logo_sec { display: none; }
+    }
   </style>
 </head>
 
